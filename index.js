@@ -25,16 +25,16 @@ const chooseColorChange = () => {
     refs.body.style.backgroundColor = colors[randomIntegerFromInterval(0, 5)];
 }
 
-const beginColorChange = () => {
-    timer = setInterval(chooseColorChange, 1000);
-    refs.startBtn.removeEventListener('click', beginColorChange);
-    refs.stopBtn.addEventListener('click', stopColorChange);
-}
-
 const stopColorChange = () => {
     clearInterval(timer);
     refs.stopBtn.removeEventListener('click', stopColorChange);
     refs.startBtn.addEventListener('click', beginColorChange);
+}
+
+const beginColorChange = () => {
+    timer = setInterval(chooseColorChange, 1000);
+    refs.startBtn.removeEventListener('click', beginColorChange);
+    refs.stopBtn.addEventListener('click', stopColorChange);
 }
 
 refs.startBtn.addEventListener('click', beginColorChange);
